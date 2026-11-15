@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyMentor | AI Learning Companion</title><link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><span class="brand-icon">✦</span><div><b>StudyMentor</b><small>LEARN SMARTER</small></div></div>
+  <nav>
+    <button class="nav-link active" data-page="dashboard">▦ <span>Dashboard</span></button>
+    <button class="nav-link" data-page="assessment">☑ <span>Skill Assessment</span></button>
+    <button class="nav-link" data-page="planner">▤ <span>Study Planner</span></button>
+    <button class="nav-link" data-page="career">✧ <span>Career Guidance</span></button>
+  </nav>
+  <div class="sidebar-note"><div class="spark">✦</div><b>Your progress matters</b><p>Small steps every day lead to big results.</p></div>
+  <div class="profile"><div class="avatar">S</div><div><b id="sideName">Student</b><small>Student account</small></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><span class="eyebrow">STUDENT LEARNING SPACE</span><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><span class="today" id="today"></span><div class="avatar">S</div></div></header>
+<section class="page active" id="dashboard">
+  <div class="welcome"><div><span class="eyebrow light">YOUR PERSONAL LEARNING COMPANION</span><h2>Learn at your pace.<br><em>Grow with confidence.</em></h2><p id="welcomeText">Build better learning habits with a plan made around your goals.</p><button class="primary-btn" data-go="assessment">Take skill assessment <span>→</span></button></div><div class="welcome-art"><div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="book">📚</div><div class="float-card fc1">✦ Adaptive plan</div><div class="float-card fc2">✓ Keep growing</div></div></div>
+  <div class="section-heading"><div><span class="eyebrow">AT A GLANCE</span><h2>Your learning overview</h2></div><span class="muted">Saved in your local database</span></div>
+  <div class="stats">
+    <article class="stat-card"><div class="stat-icon purple">▣</div><span>Quiz attempts</span><strong id="attempts">0</strong><small>Total completed assessments</small></article>
+    <article class="stat-card"><div class="stat-icon green">↗</div><span>Average score</span><strong id="average">0%</strong><small>Across your quiz attempts</small></article>
+    <article class="stat-card"><div class="stat-icon orange">◎</div><span>Tasks completed</span><strong id="completed">0</strong><small>Study plan tasks checked off</small></article>
+  </div>
+  <div class="content-grid">
+    <article class="panel"><div class="panel-head"><div><span class="eyebrow">NEXT STEP</span><h3>Recommended for you</h3></div><span class="pill">ADAPTIVE TIP</span></div><div class="recommendation"><div class="rec-icon">🎯</div><div><b id="recommendTitle">Start with a skill assessment</b><p id="recommendText">Answer a few questions to discover which topics need more attention.</p></div></div><button class="text-btn" data-go="assessment">Explore assessment →</button></article>
+    <article class="panel"><div class="panel-head"><div><span class="eyebrow">YOUR ACTIVITY</span><h3>Learning progress</h3></div></div><div class="progress-wrap"><div class="progress-meta"><span>Study tasks completed</span><b id="progressLabel">0%</b></div><div class="progress"><div id="progressBar"></div></div><p class="muted small">Complete tasks in your study planner to build your progress.</p></div><div class="mini-stats"><span>Keep showing up</span><b>🌱</b></div></article>
+  </div>
+  <div class="content-grid lower-grid"><article class="panel"><div class="panel-head"><div><span class="eyebrow">RECENT PERFORMANCE</span><h3>Assessment history</h3></div></div><div id="history" class="history"><p class="muted">Complete an assessment to see your history here.</p></div></article><article class="panel"><div class="panel-head"><div><span class="eyebrow">HOW IT WORKS</span><h3>Adaptive learning engine</h3></div></div><p class="muted explain">Your quiz answers are scored by topic. The application identifies lower-confidence topics and prioritizes practice tasks for them. Your scores and tasks are stored in SQLite on your computer.</p></article></div>
+</section>
+<section class="page" id="assessment">
+  <div class="page-intro"><span class="eyebrow">KNOW YOURSELF BETTER</span><h2>Skill assessment</h2><p>Choose the answer that best describes your current understanding. Your results help create a focused study plan.</p></div>
+  <div class="panel assessment-panel"><div class="form-row"><label for="studentName">Your name</label><input id="studentName" placeholder="Enter your name" maxlength="35"></div><div class="form-row"><label for="goal">Your current goal</label><select id="goal"><option>Improve academic performance</option><option>Prepare for placements</option><option>Learn programming</option><option>Prepare for competitive exams</option></select></div>
+  <div class="quiz-head"><div><span class="eyebrow">QUICK KNOWLEDGE CHECK</span><h3>How confident are you?</h3></div><span class="pill">5 QUESTIONS</span></div><div id="questions"></div><button class="primary-btn purple-btn" id="submitQuiz">Submit assessment <span>→</span></button><div id="quizResult" class="result hidden"></div></div>
+</section>
+<section class="page" id="planner">
+  <div class="page-intro"><span class="eyebrow">MAKE EVERY DAY COUNT</span><h2>Your study planner</h2><p>A focused action plan based on your assessment. Tick tasks as you complete them.</p></div>
+  <div class="planner-summary"><div><span class="eyebrow light">YOUR LEARNING FOCUS</span><h3 id="planFocus">Build your learning foundation</h3><p id="planSub">Start with the basics and stay consistent.</p></div><div class="planner-emoji">🗓️</div></div>
+  <div class="panel"><div class="panel-head"><div><span class="eyebrow">YOUR TASK LIST</span><h3>Study tasks</h3></div><span class="pill" id="taskCount">0 / 0 done</span></div><div id="taskList" class="task-list"></div><div class="add-task"><input id="newTask" placeholder="Add your own study task"><button class="primary-btn compact" id="addTask">+ Add task</button></div></div>
+</section>
+<section class="page" id="career">
+  <div class="page-intro"><span class="eyebrow">PLAN YOUR NEXT MOVE</span><h2>Career guidance</h2><p>Explore beginner-friendly career paths and the skills commonly used in each role.</p></div>
+  <div class="career-grid">
+    <article class="career-card"><div class="career-icon">📊</div><span class="pill">DATA & INSIGHTS</span><h3>Data Analyst</h3><p>Turn data into useful insights and reports that support decisions.</p><b>Skills to build</b><div class="chips"><span>Excel</span><span>SQL</span><span>Python</span><span>Power BI</span></div><button class="text-btn choose-career" data-career="Data Analyst">Choose this path →</button></article>
+    <article class="career-card"><div class="career-icon">💻</div><span class="pill">SOFTWARE</span><h3>Software Developer</h3><p>Design, build, test and maintain useful software applications.</p><b>Skills to build</b><div class="chips"><span>Programming</span><span>DSA</span><span>Git</span><span>Web basics</span></div><button class="text-btn choose-career" data-career="Software Developer">Choose this path →</button></article>
+    <article class="career-card"><div class="career-icon">🤖</div><span class="pill">ARTIFICIAL INTELLIGENCE</span><h3>AI / ML Beginner</h3><p>Learn how data and algorithms can help computers find patterns.</p><b>Skills to build</b><div class="chips"><span>Python</span><span>Maths</span><span>Statistics</span><span>ML basics</span></div><button class="text-btn choose-career" data-career="AI / ML Beginner">Choose this path →</button></article>
+  </div><div id="careerMessage" class="result hidden"></div>
+</section>
+<footer>StudyMentor · Adaptive student learning prototype · Powered by Python + SQLite</footer>
+</main><script src="/static/js/app.js"></script>
+</body></html>
